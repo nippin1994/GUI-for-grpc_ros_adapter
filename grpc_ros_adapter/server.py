@@ -23,7 +23,7 @@ from protobuf import parameter_server_pb2_grpc
 from protobuf import simulation_control_pb2_grpc
 from protobuf import acoustic_transmission_pb2_grpc
 from protobuf import visualization_pb2_grpc
-from protobuf import rf_coms_pb2_grpc
+#from protobuf import rf_coms_pb2_grpc
 
 from services.ping_service import PingService
 from services.sensor_streaming import SensorStreaming
@@ -33,7 +33,7 @@ from services.frame_service import FrameService
 from services.simulation_control import SimulationControl
 from services.visualization import Visualization
 from services.acoustic_transmission import AcousticTransmission
-from services.lora_transmission import LoraTransmission
+#from services.lora_transmission import LoraTransmission
 from services.sensor_callbacks import *
 
 from grpc_utils.ros_publisher_registry import RosPublisherRegistry
@@ -103,11 +103,11 @@ def serve(server_ip, server_port):
         rh.logwarn("Cannot import package 'uuv_sensor_msgs'. Acoustic transmition will be disabled")
 
 
-    rf_coms_pb2_grpc.add_LoraTransmissionServicer_to_server(
-            LoraTransmission(), server
-    )
+    #rf_coms_pb2_grpc.add_LoraTransmissionServicer_to_server(
+    #        LoraTransmission(), server
+    #)
 
-    RosPublisherRegistry.remap_proto2ros('rfcommunication', 'rf_msgs')
+    #RosPublisherRegistry.remap_proto2ros('rfcommunication', 'rf_msgs')
     server.add_insecure_port(server_ip + ':' + str(server_port))
     print(server_ip + ":" + str(server_port))
     server.start()
