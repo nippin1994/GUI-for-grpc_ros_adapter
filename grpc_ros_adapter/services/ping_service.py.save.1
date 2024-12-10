@@ -1,16 +1,5 @@
-#!/usr/bin/env python3
-
-import sys
-import os
-import logging
-
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from protobuf import ping_pb2
+#!/usr/bin/env python3from protobuf import ping_pb2
 from protobuf import ping_pb2_grpc
-
-logging.basicConfig(level=logging.DEBUG)
-logging.debug("Starting PingService server...")
-
 
 class PingService(ping_pb2_grpc.PingServicer):
     """

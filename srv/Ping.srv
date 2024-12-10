@@ -1,0 +1,4 @@
+# Ping.srv
+string request
+---
+string response

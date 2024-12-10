@@ -1,0 +1,68 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "marus_gui",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "marus_gui::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-marus_gui-Debug-8d9c29f44c24ac62af1b.json",
+					"name" : "marus_gui",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "marus_gui_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-marus_gui_autogen-Debug-613d610cd044928caa77.json",
+					"name" : "marus_gui_autogen",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/linux/workspace/src/grpc_ros_adapter/gui/build-marus_gui-Desktop-Debug",
+		"source" : "/home/linux/workspace/src/grpc_ros_adapter/gui/marus_gui"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 0
+	}
+}
