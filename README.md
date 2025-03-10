@@ -2,13 +2,13 @@
 
 ## Introduction
 
-This project presents an **Autonomous Unmanned Surface Vehicle (USV) Navigation System** that integrates the **Robot Operating System (ROS)** and **Unity** for real-time simulation. The primary goal of this project is to design and implement a flexible, modular navigation system that dynamically follows target waypoints selected through a Graphical User Interface (GUI). The system is powered by a PID controller to ensure smooth navigation and accurate control of the USV's heading and throttle.
+This project presents an **Autonomous Unmanned Surface Vehicle (USV) Navigation System** that integrates the **Robot Operating System (ROS)** and **Unity** for real-time simulation. The primary goal of this project is to design and implement a flexible navigation system that dynamically follows target waypoints selected through a Graphical User Interface (GUI). The system uses a PID controller to ensure smooth navigation and accurate control of the USV's heading and throttle.
 
 **Key features include:**
 
 - Real-time selection of target waypoints via the GUI.
-- Dynamic feedback of USV metrics such as location, heading, roll, pitch, and distance to the target.
-- Integration of a PID controller for seamless path tracking and control of the USV.
+- Dynamic feedback of USV metrics such as location, heading, roll, pitch, and distance to the target via the GUI.
+- Integration of a PID controller for path tracking and control of the USV.
 - Communication between ROS and Unity through the gRPC adapter, ensuring real-time data flow and control updates.
 - The project was developed as part of the **MSc in Automation, Controls, and Robotics** at **Sheffield Hallam University**. The design leverages ROS for control and communication, Unity for realistic simulation of boat dynamics, and a custom GUI for waypoint selection and monitoring of the USV's performance in real-time.
 
