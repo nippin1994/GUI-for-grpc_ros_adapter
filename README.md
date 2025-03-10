@@ -1,16 +1,23 @@
-# grpc_ros_adapter
+# GUI for ROS 
 
 ## Introduction
 
-This repo includes functionality for interfacing with Marus over gRPC and publish sensor data over ROS such that it is available to other ROS nodes.
+This project presents an **Autonomous Unmanned Surface Vehicle (USV) Navigation System** that integrates the **Robot Operating System (ROS)** and **Unity** for real-time simulation. The primary goal of this project is to design and implement a flexible, modular navigation system that dynamically follows target waypoints selected through a Graphical User Interface (GUI). The system is powered by a PID controller to ensure smooth navigation and accurate control of the USV's heading and throttle.
 
-Unity package is maintained in [marus-core](https://github.com/MARUSimulator/marus-core) repository.
+**Key features include:**
 
-Proto messages are maintained in [marus-proto](https://github.com/MARUSimulator/marus-proto) repository.
+- Real-time selection of target waypoints via the GUI.
+- Dynamic feedback of USV metrics such as location, heading, roll, pitch, and distance to the target.
+- Integration of a PID controller for seamless path tracking and control of the USV.
+- Communication between ROS and Unity through the gRPC adapter, ensuring real-time data flow and control updates.
+- The project was developed as part of the **MSc in Automation, Controls, and Robotics** at **Sheffield Hallam University**. The design leverages ROS for control and communication, Unity for realistic simulation of boat dynamics, and a custom GUI for waypoint selection and monitoring of the USV's performance in real-time.
+
+This repository includes the system architecture, control algorithms, and setup instructions, along with the necessary dependencies to simulate the USV's path-following capabilities.
 
 ## Getting started
 Recommended ROS distribution is Noetic.
- Setup:
+ **ROS Setup:**
+* Create ROS catkin workspace in your linux environment.
 * Clone this repository in your catkin workspace.
 After cloning, run following command to pull latest proto generated source files:
 `git submodule update --init`
@@ -30,25 +37,27 @@ After cloning, run following command to pull latest proto generated source files
 * Start grpc server:
 `roslaunch grpc_ros_adapter launch_server.launch`
 
+ **Unity Setup:**
+* Clone  [marus-example](https://github.com/MARUSimulator/marus-example) repository and open this project in Unity. Proto messages are maintained in [marus-proto](https://github.com/MARUSimulator/marus-proto) repository.
+* Pull `Assets>Scenes>Example scene` into the project space.
+* Now, Start the game in the editor.
+* Note: Run the ROS server first and then start the simulation in Unity. Unity's Console window should display that ROS connection is established.
+
+## Dependencies
+* Unity 2021.3.x LTS
+
 ## Usage and documentation
 
-For usage information and examples visit our [marus-example](https://github.com/MARUSimulator/marus-example) project repository.
+For usage information and examples visit [marus-example](https://github.com/MARUSimulator/marus-example) project repository and [Wiki-marus-example](https://github.com/MARUSimulator/marus-example/wiki).
 
-For other information and documentation visit our [documentation homepage](https://marusimulator.github.io).
+For other information and documentation visit [documentation homepage](https://marusimulator.github.io).
 
 ## Credits & Acknowledgements
 
-
+* [MARUS](https://github.com/MARUSimulator)
 * [gRPC](https://github.com/grpc/grpc)
 * [protobuf](https://github.com/protocolbuffers/protobuf)
 * [Gemini Unity simulator](https://github.com/Gemini-team/Gemini)
-
-
-## Contact
-Please feel free to provide feedback or ask questions by creating a Github issue. For other inquiries, please email us at labust@fer.hr or visit our web pages below:
-* [Laboratory for Underwater Systems and Technologies - LABUST](https://labust.fer.hr/)
-
-* [University of Zagreb, Faculty of Electrical Engineering and Computing](https://www.fer.unizg.hr/en)
 
 ## License
 This project is released under the Apache 2.0 License. Please review the [License](https://github.com/MARUSimulator/grpc_ros_adapter/blob/dev/LICENSE) file for more details.

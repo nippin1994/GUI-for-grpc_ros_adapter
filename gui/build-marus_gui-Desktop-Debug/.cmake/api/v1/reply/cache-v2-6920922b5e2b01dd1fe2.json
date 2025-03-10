@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/linux/workspace/src/grpc_ros_adapter/gui/build-marus_gui-Desktop-Debug"
+			"value" : "/home/nippin/catkin_ws/src/GUI-for-grpc_ros_adapter/gui/build-marus_gui-Desktop-Debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -479,7 +479,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/usr/include/c++/9;/usr/include/x86_64-linux-gnu;/usr/include/x86_64-linux-gnu/c++/9;/usr/include/c++/9/backward;/usr/lib/gcc/x86_64-linux-gnu/9/include;/usr/local/include;/usr/include"
+			"value" : "/usr/include/c++/9;/usr/include/x86_64-linux-gnu/c++/9;/usr/include/c++/9/backward;/usr/lib/gcc/x86_64-linux-gnu/9/include;/usr/local/include;/usr/include/x86_64-linux-gnu;/usr/include"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -539,7 +539,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/linux/workspace/src/grpc_ros_adapter/gui/marus_gui"
+			"value" : "/home/nippin/catkin_ws/src/GUI-for-grpc_ros_adapter/gui/marus_gui"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -1179,7 +1179,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/linux/workspace/src/grpc_ros_adapter/gui/build-marus_gui-Desktop-Debug"
+			"value" : "/home/nippin/catkin_ws/src/GUI-for-grpc_ros_adapter/gui/build-marus_gui-Desktop-Debug"
 		},
 		{
 			"name" : "marus_gui_SOURCE_DIR",
@@ -1191,7 +1191,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/linux/workspace/src/grpc_ros_adapter/gui/marus_gui"
+			"value" : "/home/nippin/catkin_ws/src/GUI-for-grpc_ros_adapter/gui/marus_gui"
 		}
 	],
 	"kind" : "cache",

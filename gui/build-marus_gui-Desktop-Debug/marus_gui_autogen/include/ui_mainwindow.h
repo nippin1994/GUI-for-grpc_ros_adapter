@@ -33,6 +33,7 @@ public:
     QSlider *verticalSlider_3;
     QLabel *label_4;
     QPushButton *pushButton;
+    QLabel *label_5;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -45,50 +46,60 @@ public:
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         verticalSlider = new QSlider(centralwidget);
         verticalSlider->setObjectName(QString::fromUtf8("verticalSlider"));
-        verticalSlider->setGeometry(QRect(60, 110, 231, 341));
+        verticalSlider->setGeometry(QRect(290, 210, 221, 281));
 #ifndef QT_NO_TOOLTIP
         verticalSlider->setToolTip(QString::fromUtf8(""));
 #endif // QT_NO_TOOLTIP
-        verticalSlider->setMinimum(-99);
+        verticalSlider->setMinimum(-10);
+        verticalSlider->setMaximum(10);
         verticalSlider->setOrientation(Qt::Vertical);
-        verticalSlider->setInvertedAppearance(true);
-        verticalSlider->setInvertedControls(false);
+        verticalSlider->setInvertedAppearance(false);
+        verticalSlider->setInvertedControls(true);
         label = new QLabel(centralwidget);
         label->setObjectName(QString::fromUtf8("label"));
-        label->setGeometry(QRect(120, 460, 131, 71));
+        label->setGeometry(QRect(110, 480, 131, 71));
         QFont font;
-        font.setPointSize(20);
+        font.setPointSize(15);
         label->setFont(font);
         label_2 = new QLabel(centralwidget);
         label_2->setObjectName(QString::fromUtf8("label_2"));
-        label_2->setGeometry(QRect(340, 460, 131, 71));
+        label_2->setGeometry(QRect(330, 480, 151, 71));
         label_2->setFont(font);
         verticalSlider_2 = new QSlider(centralwidget);
         verticalSlider_2->setObjectName(QString::fromUtf8("verticalSlider_2"));
-        verticalSlider_2->setGeometry(QRect(260, 110, 231, 341));
-        verticalSlider_2->setMinimum(-99);
+        verticalSlider_2->setGeometry(QRect(80, 210, 201, 281));
+        verticalSlider_2->setMinimum(-10);
+        verticalSlider_2->setMaximum(10);
         verticalSlider_2->setOrientation(Qt::Vertical);
-        verticalSlider_2->setInvertedAppearance(true);
+        verticalSlider_2->setInvertedAppearance(false);
+        verticalSlider_2->setInvertedControls(true);
         label_3 = new QLabel(centralwidget);
         label_3->setObjectName(QString::fromUtf8("label_3"));
-        label_3->setGeometry(QRect(560, 460, 131, 71));
+        label_3->setGeometry(QRect(80, 90, 131, 71));
         label_3->setFont(font);
         verticalSlider_3 = new QSlider(centralwidget);
         verticalSlider_3->setObjectName(QString::fromUtf8("verticalSlider_3"));
-        verticalSlider_3->setGeometry(QRect(470, 110, 231, 341));
-        verticalSlider_3->setMinimum(-99);
-        verticalSlider_3->setOrientation(Qt::Vertical);
-        verticalSlider_3->setInvertedAppearance(true);
+        verticalSlider_3->setGeometry(QRect(200, 40, 361, 181));
+        verticalSlider_3->setMinimum(-10);
+        verticalSlider_3->setMaximum(10);
+        verticalSlider_3->setSingleStep(1);
+        verticalSlider_3->setOrientation(Qt::Horizontal);
+        verticalSlider_3->setInvertedAppearance(false);
+        verticalSlider_3->setInvertedControls(true);
         label_4 = new QLabel(centralwidget);
         label_4->setObjectName(QString::fromUtf8("label_4"));
-        label_4->setGeometry(QRect(260, 20, 321, 71));
-        label_4->setFont(font);
+        label_4->setGeometry(QRect(260, 0, 321, 71));
+        QFont font1;
+        font1.setPointSize(20);
+        label_4->setFont(font1);
         pushButton = new QPushButton(centralwidget);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setGeometry(QRect(670, 230, 91, 91));
-        QFont font1;
-        font1.setPointSize(15);
-        pushButton->setFont(font1);
+        pushButton->setGeometry(QRect(560, 300, 91, 91));
+        pushButton->setFont(font);
+        label_5 = new QLabel(centralwidget);
+        label_5->setObjectName(QString::fromUtf8("label_5"));
+        label_5->setGeometry(QRect(590, 90, 131, 71));
+        label_5->setFont(font);
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -106,11 +117,12 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", nullptr));
-        label->setText(QApplication::translate("MainWindow", "Throttle", nullptr));
-        label_2->setText(QApplication::translate("MainWindow", "Right", nullptr));
-        label_3->setText(QApplication::translate("MainWindow", "Left", nullptr));
+        label->setText(QApplication::translate("MainWindow", "Left Throttle", nullptr));
+        label_2->setText(QApplication::translate("MainWindow", "Right Throttle", nullptr));
+        label_3->setText(QApplication::translate("MainWindow", "Steer Left", nullptr));
         label_4->setText(QApplication::translate("MainWindow", "MARUS SIMULATOR", nullptr));
         pushButton->setText(QApplication::translate("MainWindow", "Reset", nullptr));
+        label_5->setText(QApplication::translate("MainWindow", "Steer Right", nullptr));
     } // retranslateUi
 
 };

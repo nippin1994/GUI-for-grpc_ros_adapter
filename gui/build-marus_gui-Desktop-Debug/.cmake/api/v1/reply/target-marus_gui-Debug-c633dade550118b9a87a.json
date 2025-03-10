@@ -25,13 +25,13 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 37,
+				"line" : 49,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 45,
+				"line" : 69,
 				"parent" : 0
 			}
 		]
@@ -70,14 +70,14 @@
 			"includes" : 
 			[
 				{
-					"path" : "/home/linux/workspace/src/grpc_ros_adapter/gui/build-marus_gui-Desktop-Debug"
+					"path" : "/home/nippin/catkin_ws/src/GUI-for-grpc_ros_adapter/gui/build-marus_gui-Desktop-Debug"
 				},
 				{
-					"path" : "/home/linux/workspace/src/grpc_ros_adapter/gui/marus_gui"
+					"path" : "/home/nippin/catkin_ws/src/GUI-for-grpc_ros_adapter/gui/marus_gui"
 				},
 				{
 					"backtrace" : 0,
-					"path" : "/home/linux/workspace/src/grpc_ros_adapter/gui/build-marus_gui-Desktop-Debug/marus_gui_autogen/include"
+					"path" : "/home/nippin/catkin_ws/src/GUI-for-grpc_ros_adapter/gui/build-marus_gui-Desktop-Debug/marus_gui_autogen/include"
 				},
 				{
 					"backtrace" : 2,
@@ -110,7 +110,11 @@
 			[
 				0,
 				1,
-				2
+				2,
+				5,
+				8,
+				12,
+				15
 			]
 		}
 	],
@@ -165,21 +169,33 @@
 			[
 				0,
 				1,
-				2
+				2,
+				5,
+				8,
+				12,
+				15
 			]
 		},
 		{
 			"name" : "Header Files",
 			"sourceIndexes" : 
 			[
-				3
+				3,
+				6,
+				9,
+				11,
+				13,
+				16
 			]
 		},
 		{
 			"name" : "",
 			"sourceIndexes" : 
 			[
-				4
+				4,
+				7,
+				10,
+				14
 			]
 		}
 	],
@@ -189,7 +205,7 @@
 			"backtrace" : 0,
 			"compileGroupIndex" : 0,
 			"isGenerated" : true,
-			"path" : "/home/linux/workspace/src/grpc_ros_adapter/gui/build-marus_gui-Desktop-Debug/marus_gui_autogen/mocs_compilation.cpp",
+			"path" : "/home/nippin/catkin_ws/src/GUI-for-grpc_ros_adapter/gui/build-marus_gui-Desktop-Debug/marus_gui_autogen/mocs_compilation.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
@@ -213,6 +229,70 @@
 			"backtrace" : 1,
 			"path" : "mainwindow.ui",
 			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "openingscreen.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "openingscreen.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "openingscreen.ui",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "automode.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "automode.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "automode.ui",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "pwmpublisher.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "tuningplot1.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "tuningplot1.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "tuningplot1.ui",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "qcustomplot.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "qcustomplot.h",
+			"sourceGroupIndex" : 1
 		}
 	],
 	"type" : "EXECUTABLE"

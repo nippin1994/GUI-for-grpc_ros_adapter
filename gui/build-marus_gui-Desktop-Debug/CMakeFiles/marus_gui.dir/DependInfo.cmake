@@ -4,9 +4,13 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/linux/workspace/src/grpc_ros_adapter/gui/marus_gui/main.cpp" "/home/linux/workspace/src/grpc_ros_adapter/gui/build-marus_gui-Desktop-Debug/CMakeFiles/marus_gui.dir/main.cpp.o"
-  "/home/linux/workspace/src/grpc_ros_adapter/gui/marus_gui/mainwindow.cpp" "/home/linux/workspace/src/grpc_ros_adapter/gui/build-marus_gui-Desktop-Debug/CMakeFiles/marus_gui.dir/mainwindow.cpp.o"
-  "/home/linux/workspace/src/grpc_ros_adapter/gui/build-marus_gui-Desktop-Debug/marus_gui_autogen/mocs_compilation.cpp" "/home/linux/workspace/src/grpc_ros_adapter/gui/build-marus_gui-Desktop-Debug/CMakeFiles/marus_gui.dir/marus_gui_autogen/mocs_compilation.cpp.o"
+  "/home/nippin/catkin_ws/src/GUI-for-grpc_ros_adapter/gui/marus_gui/automode.cpp" "/home/nippin/catkin_ws/src/GUI-for-grpc_ros_adapter/gui/build-marus_gui-Desktop-Debug/CMakeFiles/marus_gui.dir/automode.cpp.o"
+  "/home/nippin/catkin_ws/src/GUI-for-grpc_ros_adapter/gui/marus_gui/main.cpp" "/home/nippin/catkin_ws/src/GUI-for-grpc_ros_adapter/gui/build-marus_gui-Desktop-Debug/CMakeFiles/marus_gui.dir/main.cpp.o"
+  "/home/nippin/catkin_ws/src/GUI-for-grpc_ros_adapter/gui/marus_gui/mainwindow.cpp" "/home/nippin/catkin_ws/src/GUI-for-grpc_ros_adapter/gui/build-marus_gui-Desktop-Debug/CMakeFiles/marus_gui.dir/mainwindow.cpp.o"
+  "/home/nippin/catkin_ws/src/GUI-for-grpc_ros_adapter/gui/build-marus_gui-Desktop-Debug/marus_gui_autogen/mocs_compilation.cpp" "/home/nippin/catkin_ws/src/GUI-for-grpc_ros_adapter/gui/build-marus_gui-Desktop-Debug/CMakeFiles/marus_gui.dir/marus_gui_autogen/mocs_compilation.cpp.o"
+  "/home/nippin/catkin_ws/src/GUI-for-grpc_ros_adapter/gui/marus_gui/openingscreen.cpp" "/home/nippin/catkin_ws/src/GUI-for-grpc_ros_adapter/gui/build-marus_gui-Desktop-Debug/CMakeFiles/marus_gui.dir/openingscreen.cpp.o"
+  "/home/nippin/catkin_ws/src/GUI-for-grpc_ros_adapter/gui/marus_gui/qcustomplot.cpp" "/home/nippin/catkin_ws/src/GUI-for-grpc_ros_adapter/gui/build-marus_gui-Desktop-Debug/CMakeFiles/marus_gui.dir/qcustomplot.cpp.o"
+  "/home/nippin/catkin_ws/src/GUI-for-grpc_ros_adapter/gui/marus_gui/tuningplot1.cpp" "/home/nippin/catkin_ws/src/GUI-for-grpc_ros_adapter/gui/build-marus_gui-Desktop-Debug/CMakeFiles/marus_gui.dir/tuningplot1.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -20,7 +24,7 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "."
-  "/home/linux/workspace/src/grpc_ros_adapter/gui/marus_gui"
+  "/home/nippin/catkin_ws/src/GUI-for-grpc_ros_adapter/gui/marus_gui"
   "marus_gui_autogen/include"
   "/usr/include/x86_64-linux-gnu/qt5"
   "/usr/include/x86_64-linux-gnu/qt5/QtWidgets"

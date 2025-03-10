@@ -3,12 +3,13 @@
 #include <ros/ros.h>
 #include <std_msgs/Float32MultiArray.h>
 #include <QTimer>  // Include QTimer for periodic publishing
+#include "pwmpublisher.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
-    , nh(new ros::NodeHandle)  // Initialize ROS NodeHandle
     , sliderValues(3, 0)  // Initialize the data array with 3 zeros
+    , nh(new ros::NodeHandle)
 {
     ui->setupUi(this);
 
@@ -74,7 +75,7 @@ void MainWindow::publishSliderValues()
     msg.data = sliderValues;
 
     // Publish the message to the /pwm_out topic
-    pwm_publisher.publish(msg);
+    //pwm_publisher.publish(msg);
 
     // Log the published values (optional for debugging)
 //    ROS_INFO("Published slider values: [%f, %f, %f]",

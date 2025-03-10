@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/linux/workspace/src/grpc_ros_adapter/gui/marus_gui
+CMAKE_SOURCE_DIR = /home/nippin/catkin_ws/src/GUI-for-grpc_ros_adapter/gui/marus_gui
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/linux/workspace/src/grpc_ros_adapter/gui/build-marus_gui-Desktop-Debug
+CMAKE_BINARY_DIR = /home/nippin/catkin_ws/src/GUI-for-grpc_ros_adapter/gui/build-marus_gui-Desktop-Debug
 
 # Utility rule file for marus_gui_autogen.
 
@@ -54,8 +54,8 @@ CMAKE_BINARY_DIR = /home/linux/workspace/src/grpc_ros_adapter/gui/build-marus_gu
 include CMakeFiles/marus_gui_autogen.dir/progress.make
 
 CMakeFiles/marus_gui_autogen:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/linux/workspace/src/grpc_ros_adapter/gui/build-marus_gui-Desktop-Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC and UIC for target marus_gui"
-	/usr/bin/cmake -E cmake_autogen /home/linux/workspace/src/grpc_ros_adapter/gui/build-marus_gui-Desktop-Debug/CMakeFiles/marus_gui_autogen.dir/AutogenInfo.json Debug
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/nippin/catkin_ws/src/GUI-for-grpc_ros_adapter/gui/build-marus_gui-Desktop-Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC and UIC for target marus_gui"
+	/usr/bin/cmake -E cmake_autogen /home/nippin/catkin_ws/src/GUI-for-grpc_ros_adapter/gui/build-marus_gui-Desktop-Debug/CMakeFiles/marus_gui_autogen.dir/AutogenInfo.json Debug
 
 marus_gui_autogen: CMakeFiles/marus_gui_autogen
 marus_gui_autogen: CMakeFiles/marus_gui_autogen.dir/build.make
@@ -72,6 +72,6 @@ CMakeFiles/marus_gui_autogen.dir/clean:
 .PHONY : CMakeFiles/marus_gui_autogen.dir/clean
 
 CMakeFiles/marus_gui_autogen.dir/depend:
-	cd /home/linux/workspace/src/grpc_ros_adapter/gui/build-marus_gui-Desktop-Debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/linux/workspace/src/grpc_ros_adapter/gui/marus_gui /home/linux/workspace/src/grpc_ros_adapter/gui/marus_gui /home/linux/workspace/src/grpc_ros_adapter/gui/build-marus_gui-Desktop-Debug /home/linux/workspace/src/grpc_ros_adapter/gui/build-marus_gui-Desktop-Debug /home/linux/workspace/src/grpc_ros_adapter/gui/build-marus_gui-Desktop-Debug/CMakeFiles/marus_gui_autogen.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/nippin/catkin_ws/src/GUI-for-grpc_ros_adapter/gui/build-marus_gui-Desktop-Debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/nippin/catkin_ws/src/GUI-for-grpc_ros_adapter/gui/marus_gui /home/nippin/catkin_ws/src/GUI-for-grpc_ros_adapter/gui/marus_gui /home/nippin/catkin_ws/src/GUI-for-grpc_ros_adapter/gui/build-marus_gui-Desktop-Debug /home/nippin/catkin_ws/src/GUI-for-grpc_ros_adapter/gui/build-marus_gui-Desktop-Debug /home/nippin/catkin_ws/src/GUI-for-grpc_ros_adapter/gui/build-marus_gui-Desktop-Debug/CMakeFiles/marus_gui_autogen.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/marus_gui_autogen.dir/depend
 

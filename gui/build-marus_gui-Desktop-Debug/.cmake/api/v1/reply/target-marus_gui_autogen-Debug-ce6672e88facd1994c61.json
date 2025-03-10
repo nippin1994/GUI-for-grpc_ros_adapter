@@ -44,13 +44,13 @@
 		{
 			"backtrace" : 0,
 			"isGenerated" : true,
-			"path" : "/home/linux/workspace/src/grpc_ros_adapter/gui/build-marus_gui-Desktop-Debug/CMakeFiles/marus_gui_autogen",
+			"path" : "/home/nippin/catkin_ws/src/GUI-for-grpc_ros_adapter/gui/build-marus_gui-Desktop-Debug/CMakeFiles/marus_gui_autogen",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 0,
 			"isGenerated" : true,
-			"path" : "/home/linux/workspace/src/grpc_ros_adapter/gui/build-marus_gui-Desktop-Debug/CMakeFiles/marus_gui_autogen.rule",
+			"path" : "/home/nippin/catkin_ws/src/GUI-for-grpc_ros_adapter/gui/build-marus_gui-Desktop-Debug/CMakeFiles/marus_gui_autogen.rule",
 			"sourceGroupIndex" : 1
 		}
 	],

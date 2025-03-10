@@ -18,7 +18,7 @@ find_package(catkin REQUIRED COMPONENTS
 )
 
 ## System dependencies are found with CMake's conventions
-find_package(Qt5 REQUIRED COMPONENTS Widgets Core Gui PrintSupport Quick Qml QuickWidgets)
+ find_package(Qt5 REQUIRED COMPONENTS Widgets)
 
 add_service_files(
   DIRECTORY srv
@@ -74,12 +74,11 @@ catkin_package(
 include_directories(
   ${catkin_INCLUDE_DIRS}
   ${Qt5Widgets_INCLUDE_DIRS}
-  /home/nippin/catkin_ws/build/grpc_ros_adapter
 )
 
 #Enable aoutomatic processing of .ui files
 set(CMAKE_AUTOUIC ON)
-set(CMAKE_AUTORCC ON)
+
 set(CMAKE_AUTOMOC ON)  # Automatically run moc on all headers with Q_OBJECT
 
 ## Declare a C++ library
@@ -87,35 +86,7 @@ set(CMAKE_AUTOMOC ON)  # Automatically run moc on all headers with Q_OBJECT
 #   src/${PROJECT_NAME}/ros_adapter.cpp
 # )
 
-## Add .ui files for processing
-qt5_wrap_ui(UI_HEADERS
-  gui/marus_gui/mainwindow.ui
-  gui/marus_gui/openingscreen.ui
-  gui/marus_gui/automode.ui
-  gui/marus_gui/tuningplot1.ui
-)
-
-## Add source files
-set(SOURCES
-  gui/marus_gui/main.cpp
-  gui/marus_gui/mainwindow.cpp
-  gui/marus_gui/openingscreen.cpp
-  gui/marus_gui/automode.cpp
-  gui/marus_gui/tuningplot1.cpp
-  gui/marus_gui/qcustomplot.cpp
-)
-
-## Add headers for moc processing
-set(HEADERS
-  gui/marus_gui/mainwindow.h
-  gui/marus_gui/openingscreen.h
-  gui/marus_gui/automode.h
-  gui/marus_gui/tuningplot1.h
-  gui/marus_gui/qcustomplot.h
-)
-
-## Create the executable
-add_executable(marus_gui ${SOURCES} ${HEADERS} ${UI_HEADERS})
+add_executable(marus_gui gui/marus_gui/main.cpp gui/marus_gui/mainwindow.cpp gui/marus_gui/mainwindow.cpp gui/marus_gui/mainwindow.h gui/marus_gui/QMainWindowmainwindow.ui)
 
 
 ## Add cmake target dependencies of the library
@@ -123,12 +94,7 @@ add_executable(marus_gui ${SOURCES} ${HEADERS} ${UI_HEADERS})
 ## either from message generation or dynamic reconfigure
 # add_dependencies(${PROJECT_NAME} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
-target_link_libraries(marus_gui ${catkin_LIBRARIES} Qt5::Widgets Qt5::Core Qt5::Gui 
-   Qt5::PrintSupport
-   Qt5::Quick
-   Qt5::Qml
-   Qt5::QuickWidgets)
-
+target_link_libraries(marus_gui ${catkin_LIBRARIES} Qt5::Widgets)
 ## Declare a C++ executable
 ## The recommended prefix ensures that target names across packages don't collide
 # add_executable(${PROJECT_NAME}_node src/ros_adapter_node.cpp)
@@ -190,3 +156,112 @@ catkin_install_python(PROGRAMS
 #   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
 # )
 
+#############
+## Testing ##
+#############
+
+## Add gtest based cpp test target and link libraries
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_ros_adapter.cpp)
+# if(TARGET ${PROJECT_NAME}-test)
+#   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
+# endif()
+
+## Add folders to be run by python nosetests
+# catkin_add_nosetests(test)
+
+## See http://docs.ros.org/melodic/api/catkin/html/howto/format1/building_l># install(TARGETS ${PROJECT_NAME}
+#   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+#   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+#   RUNTIME DESTINATION ${CATKIN_GLOBAL_BIN_DESTINATION}
+# )
+
+## Mark cpp header files for installation
+# install(DIRECTORY include/${PROJECT_NAME}/
+#   DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+#   FILES_MATCHING PATTERN "*.h"
+#   PATTERN ".svn" EXCLUDE
+# )
+
+## Mark other files for installation (e.g. launch and bag files, etc.)
+# install(FILES
+#   # myfile1
+#   # myfile2
+#   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+# )
+
+#############
+## Testing ##
+#############
+
+## Add gtest based cpp test target and link libraries
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_ros_adapter.cpp)
+# if(TARGET ${PROJECT_NAME}-test)
+#   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
+# endif()
+
+## Add folders to be run by python nosetests
+# catkin_add_nosetests(test)
+
+#   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+#   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+#   RUNTIME DESTINATION ${CATKIN_GLOBAL_BIN_DESTINATION}
+# )
+
+## Mark cpp header files for installation
+# install(DIRECTORY include/${PROJECT_NAME}/
+#   DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+#   FILES_MATCHING PATTERN "*.h"
+#   PATTERN ".svn" EXCLUDE
+# )
+
+## Mark other files for installation (e.g. launch and bag files, etc.)
+# install(FILES
+#   # myfile1
+#   # myfile2
+#   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+# )
+
+#############
+## Testing ##
+#############
+
+## Add gtest based cpp test target and link libraries
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_ros_adapter.cpp)
+# if(TARGET ${PROJECT_NAME}-test)
+#   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
+# endif()
+
+## Add folders to be run by python nosetests
+# catkin_add_nosetests(test)
+
+#   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+#   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+#   RUNTIME DESTINATION ${CATKIN_GLOBAL_BIN_DESTINATION}
+# )
+
+## Mark cpp header files for installation
+# install(DIRECTORY include/${PROJECT_NAME}/
+#   DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+#   FILES_MATCHING PATTERN "*.h"
+#   PATTERN ".svn" EXCLUDE
+# )
+
+## Mark other files for installation (e.g. launch and bag files, etc.)
+# install(FILES
+#   # myfile1
+#   # myfile2
+#   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+# )
+
+#############
+## Testing ##
+#############
+
+## Add gtest based cpp test target and link libraries
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_ros_adapter.cpp)
+# if(TARGET ${PROJECT_NAME}-test)
+#   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
+# endif()
+
+## Add folders to be run by python nosetests
+# catkin_add_nosetests(test)

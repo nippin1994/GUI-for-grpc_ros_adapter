@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/linux/workspace/src/grpc_ros_adapter/gui/marus_gui
+CMAKE_SOURCE_DIR = /home/nippin/catkin_ws/src/GUI-for-grpc_ros_adapter/gui/marus_gui
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/linux/workspace/src/grpc_ros_adapter/gui/build-marus_gui-Desktop-Debug
+CMAKE_BINARY_DIR = /home/nippin/catkin_ws/src/GUI-for-grpc_ros_adapter/gui/build-marus_gui-Desktop-Debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/linux/workspace/src/grpc_ros_adapter/gui/build-marus_gui-Desktop-Debug/CMakeFiles /home/linux/workspace/src/grpc_ros_adapter/gui/build-marus_gui-Desktop-Debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/nippin/catkin_ws/src/GUI-for-grpc_ros_adapter/gui/build-marus_gui-Desktop-Debug/CMakeFiles /home/nippin/catkin_ws/src/GUI-for-grpc_ros_adapter/gui/build-marus_gui-Desktop-Debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/linux/workspace/src/grpc_ros_adapter/gui/build-marus_gui-Desktop-Debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/nippin/catkin_ws/src/GUI-for-grpc_ros_adapter/gui/build-marus_gui-Desktop-Debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -135,6 +135,33 @@ marus_gui_autogen: cmake_check_build_system
 marus_gui_autogen/fast:
 	$(MAKE) -f CMakeFiles/marus_gui_autogen.dir/build.make CMakeFiles/marus_gui_autogen.dir/build
 .PHONY : marus_gui_autogen/fast
+
+automode.o: automode.cpp.o
+
+.PHONY : automode.o
+
+# target to build an object file
+automode.cpp.o:
+	$(MAKE) -f CMakeFiles/marus_gui.dir/build.make CMakeFiles/marus_gui.dir/automode.cpp.o
+.PHONY : automode.cpp.o
+
+automode.i: automode.cpp.i
+
+.PHONY : automode.i
+
+# target to preprocess a source file
+automode.cpp.i:
+	$(MAKE) -f CMakeFiles/marus_gui.dir/build.make CMakeFiles/marus_gui.dir/automode.cpp.i
+.PHONY : automode.cpp.i
+
+automode.s: automode.cpp.s
+
+.PHONY : automode.s
+
+# target to generate assembly for a file
+automode.cpp.s:
+	$(MAKE) -f CMakeFiles/marus_gui.dir/build.make CMakeFiles/marus_gui.dir/automode.cpp.s
+.PHONY : automode.cpp.s
 
 main.o: main.cpp.o
 
@@ -217,6 +244,87 @@ marus_gui_autogen/mocs_compilation.cpp.s:
 	$(MAKE) -f CMakeFiles/marus_gui.dir/build.make CMakeFiles/marus_gui.dir/marus_gui_autogen/mocs_compilation.cpp.s
 .PHONY : marus_gui_autogen/mocs_compilation.cpp.s
 
+openingscreen.o: openingscreen.cpp.o
+
+.PHONY : openingscreen.o
+
+# target to build an object file
+openingscreen.cpp.o:
+	$(MAKE) -f CMakeFiles/marus_gui.dir/build.make CMakeFiles/marus_gui.dir/openingscreen.cpp.o
+.PHONY : openingscreen.cpp.o
+
+openingscreen.i: openingscreen.cpp.i
+
+.PHONY : openingscreen.i
+
+# target to preprocess a source file
+openingscreen.cpp.i:
+	$(MAKE) -f CMakeFiles/marus_gui.dir/build.make CMakeFiles/marus_gui.dir/openingscreen.cpp.i
+.PHONY : openingscreen.cpp.i
+
+openingscreen.s: openingscreen.cpp.s
+
+.PHONY : openingscreen.s
+
+# target to generate assembly for a file
+openingscreen.cpp.s:
+	$(MAKE) -f CMakeFiles/marus_gui.dir/build.make CMakeFiles/marus_gui.dir/openingscreen.cpp.s
+.PHONY : openingscreen.cpp.s
+
+qcustomplot.o: qcustomplot.cpp.o
+
+.PHONY : qcustomplot.o
+
+# target to build an object file
+qcustomplot.cpp.o:
+	$(MAKE) -f CMakeFiles/marus_gui.dir/build.make CMakeFiles/marus_gui.dir/qcustomplot.cpp.o
+.PHONY : qcustomplot.cpp.o
+
+qcustomplot.i: qcustomplot.cpp.i
+
+.PHONY : qcustomplot.i
+
+# target to preprocess a source file
+qcustomplot.cpp.i:
+	$(MAKE) -f CMakeFiles/marus_gui.dir/build.make CMakeFiles/marus_gui.dir/qcustomplot.cpp.i
+.PHONY : qcustomplot.cpp.i
+
+qcustomplot.s: qcustomplot.cpp.s
+
+.PHONY : qcustomplot.s
+
+# target to generate assembly for a file
+qcustomplot.cpp.s:
+	$(MAKE) -f CMakeFiles/marus_gui.dir/build.make CMakeFiles/marus_gui.dir/qcustomplot.cpp.s
+.PHONY : qcustomplot.cpp.s
+
+tuningplot1.o: tuningplot1.cpp.o
+
+.PHONY : tuningplot1.o
+
+# target to build an object file
+tuningplot1.cpp.o:
+	$(MAKE) -f CMakeFiles/marus_gui.dir/build.make CMakeFiles/marus_gui.dir/tuningplot1.cpp.o
+.PHONY : tuningplot1.cpp.o
+
+tuningplot1.i: tuningplot1.cpp.i
+
+.PHONY : tuningplot1.i
+
+# target to preprocess a source file
+tuningplot1.cpp.i:
+	$(MAKE) -f CMakeFiles/marus_gui.dir/build.make CMakeFiles/marus_gui.dir/tuningplot1.cpp.i
+.PHONY : tuningplot1.cpp.i
+
+tuningplot1.s: tuningplot1.cpp.s
+
+.PHONY : tuningplot1.s
+
+# target to generate assembly for a file
+tuningplot1.cpp.s:
+	$(MAKE) -f CMakeFiles/marus_gui.dir/build.make CMakeFiles/marus_gui.dir/tuningplot1.cpp.s
+.PHONY : tuningplot1.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -227,6 +335,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... marus_gui"
 	@echo "... marus_gui_autogen"
+	@echo "... automode.o"
+	@echo "... automode.i"
+	@echo "... automode.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
@@ -236,6 +347,15 @@ help:
 	@echo "... marus_gui_autogen/mocs_compilation.o"
 	@echo "... marus_gui_autogen/mocs_compilation.i"
 	@echo "... marus_gui_autogen/mocs_compilation.s"
+	@echo "... openingscreen.o"
+	@echo "... openingscreen.i"
+	@echo "... openingscreen.s"
+	@echo "... qcustomplot.o"
+	@echo "... qcustomplot.i"
+	@echo "... qcustomplot.s"
+	@echo "... tuningplot1.o"
+	@echo "... tuningplot1.i"
+	@echo "... tuningplot1.s"
 .PHONY : help
 
 

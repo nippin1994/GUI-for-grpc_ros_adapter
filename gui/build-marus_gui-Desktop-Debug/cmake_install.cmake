@@ -1,4 +1,4 @@
-# Install script for directory: /home/linux/workspace/src/grpc_ros_adapter/gui/marus_gui
+# Install script for directory: /home/nippin/catkin_ws/src/GUI-for-grpc_ros_adapter/gui/marus_gui
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/linux/workspace/src/grpc_ros_adapter/gui/build-marus_gui-Desktop-Debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/nippin/catkin_ws/src/GUI-for-grpc_ros_adapter/gui/build-marus_gui-Desktop-Debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

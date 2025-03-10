@@ -2,9 +2,13 @@ file(REMOVE_RECURSE
   "CMakeFiles/marus_gui_autogen.dir/AutogenUsed.txt"
   "CMakeFiles/marus_gui_autogen.dir/ParseCache.txt"
   "marus_gui_autogen"
+  "CMakeFiles/marus_gui.dir/automode.cpp.o"
   "CMakeFiles/marus_gui.dir/main.cpp.o"
   "CMakeFiles/marus_gui.dir/mainwindow.cpp.o"
   "CMakeFiles/marus_gui.dir/marus_gui_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/marus_gui.dir/openingscreen.cpp.o"
+  "CMakeFiles/marus_gui.dir/qcustomplot.cpp.o"
+  "CMakeFiles/marus_gui.dir/tuningplot1.cpp.o"
   "marus_gui"
   "marus_gui.pdb"
 )

@@ -32,6 +32,18 @@ if(ANDROID)
     mainwindow.cpp
     mainwindow.h
     mainwindow.ui
+    openingscreen.cpp
+    openingscreen.h
+    openingscreen.ui
+    automode.cpp
+    automode.h
+    automode.ui
+    pwmpublisher.h
+    tuningplot1.cpp
+    tuningplot1.h
+    tuningplot1.ui
+    qcustomplot.cpp
+    qcustomplot.h
   )
 else()
   add_executable(marus_gui
@@ -39,6 +51,18 @@ else()
     mainwindow.cpp
     mainwindow.h
     mainwindow.ui
+    openingscreen.cpp
+    openingscreen.h
+    openingscreen.ui
+    automode.cpp
+    automode.h
+    automode.ui
+    pwmpublisher.h
+    tuningplot1.cpp
+    tuningplot1.h
+    tuningplot1.ui
+    qcustomplot.cpp
+    qcustomplot.h
   )
 endif()
 
