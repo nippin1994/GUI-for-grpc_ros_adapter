@@ -100,6 +100,7 @@ double PIDController::compute(double setpoint, double actual) {
 //             Kd * derivative, returnVal);
 
     return returnVal;
+    ROS_INFO("PID Block");
 
 }
 
@@ -131,10 +132,21 @@ automode::automode(QWidget *parent) :
     connect(publishTimer, &QTimer::timeout, this, &automode::autoPublishValuesPeriodically);
     publishTimer->start(100);  // 100 ms interval for publishing
 
+    connect(this, &automode::updateGpsDataSignal, this, &automode::updateGpsData);
+    connect(this, &automode::updateImuDataSignal, this, &automode::updateImuData);
 
     // Initialize PID Controllers for steering and throttle
     steeringPID = new PIDController(68, 28, 0);
     throttlePID = new PIDController(100, 50, 0);
+
+    ui->kpGain->setText(QString::number(68));
+    ui->kiGain->setText(QString::number(28));
+    ui->kdGain->setText(QString::number(0));
+
+    ui->kpGain_throttle->setText(QString::number(100));
+    ui->kiGain_throttle->setText(QString::number(50));
+    ui->kdGain_throttle->setText(QString::number(0));
+
 
     automode::initializeLogFile(); // Initialize the log file with a header
 
@@ -160,18 +172,9 @@ void automode::tfCallback(const tf2_msgs::TFMessage::ConstPtr &msg)
             // Extract translation and rotation
             const auto &translation = transform.transform.translation;
             const auto &rotation = transform.transform.rotation;
-
-//            // Update the labels within the boatPosition QFrame
-//            // Directly update the labels in the boatPosition QFrame
-//            ui->xTranslation->setText(QString::number(translation.x, 'f', 16));
-//            ui->yTranslation->setText(QString::number(translation.y, 'f', 16));
-//            ui->zTranslation->setText(QString::number(translation.z, 'f', 16));
-//            ui->xRotation->setText(QString::number(rotation.x, 'f', 16));
-//            ui->yRotation->setText(QString::number(rotation.y, 'f', 16));
-//            ui->zRotation->setText(QString::number(rotation.z, 'f', 16));
-//            ui->wRotation->setText(QString::number(rotation.w, 'f', 16));
         }
     }
+    //ROS_INFO("TF CALLBACK");
 }
 
 double currentLat = 0;
@@ -179,20 +182,21 @@ double currentLon = 0;
 int targetIndex;
 void automode::gpsCallback(const sensor_msgs::NavSatFix::ConstPtr &msg)
 {
+    double latitude = 0.0;
+    double longitude = 0.0;
+    double altitude = 0.0;
+    QString fixStatus = "Unknown";
+    QString targetText = "";
+    double distance = 0;
+
     // Check if the NavSatFix message contains valid GPS data
     if (msg->status.status != sensor_msgs::NavSatStatus::STATUS_NO_FIX) {
         // Extract latitude, longitude, and altitude
-        const auto &latitude = msg->latitude;
-        const auto &longitude = msg->longitude;
-        const auto &altitude = msg->altitude;
-
-        // Update the labels within the boatPosition QFrame
-        ui->latitude->setText(QString::number(latitude, 'f', 16) + "°");  // Latitude in degrees
-        ui->longitude->setText(QString::number(longitude, 'f', 16) + "°");  // Longitude in degrees
-        ui->altitude->setText(QString::number(altitude, 'f', 2) + " m");    // Altitude in meters
+        latitude = msg->latitude;
+        longitude = msg->longitude;
+        altitude = msg->altitude;
 
         // display the GPS fix type for debugging or user information
-        QString fixStatus;
         switch (msg->status.status) {
             case sensor_msgs::NavSatStatus::STATUS_NO_FIX:
                 fixStatus = "No Fix";
@@ -210,22 +214,14 @@ void automode::gpsCallback(const sensor_msgs::NavSatFix::ConstPtr &msg)
                 fixStatus = "Unknown";
                 break;
         }
-        ui->gpsFixStatus->setText(fixStatus);  // Display the GPS fix status
 
         currentLat = msg->latitude;
         currentLon = msg->longitude;
-        QString targetText;
 
         // Check if we have reached the target waypoint
         if (!targets.empty()) {
             targetIndex = 0;  // Get the first target
-            double distance = calculateDistance(currentLat, currentLon, targets[targetIndex].first, targets[targetIndex].second);
-
-            ui->distToWaypoint->setText(QString::number(distance, 'f', 2) + " m");
-
-//            ROS_INFO("Distance to waypoint: %f km (Current: [%f, %f], Target: [%f, %f])",
-//                     distance, currentLat, currentLon,
-//                     targets[targetIndex].first, targets[targetIndex].second);
+            distance = calculateDistance(currentLat, currentLon, targets[targetIndex].first, targets[targetIndex].second);
 
             if (distance < 0.1f) {  // Threshold distance for waypoint reach
                 ROS_INFO("Reached waypoint: (%f, %f)", targets[targetIndex].first, targets[targetIndex].second);
@@ -234,11 +230,12 @@ void automode::gpsCallback(const sensor_msgs::NavSatFix::ConstPtr &msg)
                 resetPIDValues();
 
                 targetText = QString("Target Reached: %1, %2").arg(targets[targetIndex].first, 0, 'f', 6).arg(targets[targetIndex].second, 0, 'f', 6);
-
-                // Append the formatted text to the QPlainTextEdit
-                ui->targetStatusText->appendPlainText(targetText);
             }
         }
+    }
+    else
+    {
+         ROS_INFO("GPS status invalid");
     }
 
     if(isPidActive)
@@ -246,6 +243,25 @@ void automode::gpsCallback(const sensor_msgs::NavSatFix::ConstPtr &msg)
         automode::logDataToFile();
     }
 
+    emit updateGpsDataSignal(latitude, longitude, altitude, fixStatus, targetText, distance);
+}
+
+void automode::updateGpsData(double latitude, double longitude, double altitude, QString fixStatus, QString targetText, double distance)
+{
+    static QTime lastUpdate = QTime::currentTime();
+    //qDebug() << "Updating GPS data:" << latitude << longitude << altitude;
+
+    ui->latitude->setText(QString::number(latitude, 'f', 16) + "°");
+    ui->longitude->setText(QString::number(longitude, 'f', 16) + "°");
+    ui->altitude->setText(QString::number(altitude, 'f', 2) + " m");
+
+    ui->distToWaypoint->setText(QString::number(distance, 'f', 2) + " m");
+
+    if (!targetText.isEmpty()) {
+    ui->targetStatusText->append(targetText);
+    }
+
+    ui->gpsFixStatus->setText(fixStatus);  // Display the GPS fix status
 }
 
 double heading;
@@ -277,21 +293,21 @@ void automode::imuCallback(const sensor_msgs::Imu::ConstPtr &msg)
     double angular_velocity_y = msg->angular_velocity.y;
     double angular_velocity_z = msg->angular_velocity.z;
 
-    // Print or update the GUI with the calculated values
-    // Update the labels or use these values as needed
-    ui->heading->setText(QString::number(heading, 'f', 2) + " rad");   // Heading in radians
-    ui->roll->setText(QString::number(roll, 'f', 2) + " rad");         // Roll in radians
-    ui->pitch->setText(QString::number(pitch, 'f', 2) + " rad");       // Pitch in radians
-    ui->speed->setText(QString::number(linear_speed, 'f', 2) + " m/s"); // Linear speed (m/s)
+    // Convert to degrees
+    double heading_deg = heading * (180.0 / M_PI);
+    double roll_deg = roll * (180.0 / M_PI);
+    double pitch_deg = pitch * (180.0 / M_PI);
+
+
 
     // Format the components into a single string with units for angular velocity
-    QString angular_velocity_str = QString("X: %1 rad/s, Y: %2 rad/s, Z: %3 rad/s")
+    QString angular_velocity_str = QString("X: %1 rad/s\nY: %2 rad/s\nZ: %3 rad/s")
         .arg(angular_velocity_x, 0, 'f', 4)  // 'f' for fixed-point, 2 digits after decimal
         .arg(angular_velocity_y, 0, 'f', 4)
         .arg(angular_velocity_z, 0, 'f', 4);
 
     // Set the concatenated string to the angular velocity label
-    ui->angularvelocity->setText(angular_velocity_str);
+    //ui->angularvelocity->setText(angular_velocity_str);
 
     currentHeading = heading;
 
@@ -300,6 +316,18 @@ void automode::imuCallback(const sensor_msgs::Imu::ConstPtr &msg)
         automode::logDataToFile();
     }
 
+    emit updateImuDataSignal(heading_deg, roll_deg, pitch_deg, linear_speed);
+
+    //ROS_INFO("IMU CALLBACK");
+}
+
+void automode::updateImuData(double heading_deg, double roll_deg, double pitch_deg, double linear_speed)
+{
+    // Update the labels with degree values
+    ui->heading->setText(QString::number(heading_deg, 'f', 2) + "°");
+    ui->roll->setText(QString::number(roll_deg, 'f', 2) + "°");
+    ui->pitch->setText(QString::number(pitch_deg, 'f', 2) + "°");
+    ui->speed->setText(QString::number(linear_speed, 'f', 2) + " m/s"); // Linear speed (m/s)
 }
 
 QVector<QPointF> headingErrors;
@@ -320,6 +348,10 @@ void automode::computePIDAndPublish(int targetIndex, double currentLat, double c
         pwmValues[1] = 0;
         pwmValues[2] = 0;
         // Skip computation if PID is not active
+
+        ui->throttleGUI->setText("0.0");
+        ui->steerGUI->setText("0.0");
+
         return;
     }
 
@@ -371,12 +403,9 @@ void automode::computePIDAndPublish(int targetIndex, double currentLat, double c
         throttle = 1.0;  // Full speed for intermediate waypoints
     }
 
-    ROS_INFO("headingError: %f", headingError);
-
     if (std::abs(headingError) > M_PI/2) {
         // Gradually reduce the throttle to a minimal value for a U-turn
         throttle = throttle * 0.25; // Reduce throttle by 25%
-        ROS_INFO("throttleReduced to %f", throttle);
         if (throttle < 0.2) { // Minimum throttle limit for U-turn
             throttle = 0.2;  // Prevent throttle from dropping too low
         }
@@ -389,13 +418,16 @@ void automode::computePIDAndPublish(int targetIndex, double currentLat, double c
 
     ui->throttleGUI->setText(QString::number(throttle, 'f', 2));
     ui->steerGUI->setText(QString::number(steer, 'f', 2));
-    //ROS_INFO("Desired Heading: %f rad, Current Heading: %f rad, Heading Error: %f rad, Steer: %f, Throttle: %f",
-    //         desiredHeading, currentHeading, headingError, steer, throttle);
 
-    //ROS_INFO("Desired: %f, Current: %f, headingError: %f Steer: %f", desiredHeading, currentHeading, headingError, steer);
+    plotDialog->appendPlotData(
+        headingErrors.last(),
+        distanceErrors.last(),
+        posCurrent.last(),
+        posDesired.last(),
+        headingCurrent.last(),
+        headingDesired.last()
+    );
 
-
-    plotDialog->updatePlot(headingErrors, distanceErrors, posCurrent, posDesired, headingCurrent, headingDesired); // Update the existing plot
 
     automode::logDataToFile();
 }
@@ -446,20 +478,6 @@ void automode::processAngles(double desired, double current, double &adjustedDes
 }
 
 
-// Function to calculate the shortest angle difference
-double automode::calculateAngleDifference(double desired, double current) {
-    // Normalize both angles to the range [-180, 180]
-    double normalizedDesired = -normalizeAngle(desired);
-    double normalizedCurrent = normalizeAngle(current);
-
-    // Calculate the difference and wrap it to the shortest path
-    double angleDiff = normalizedDesired - normalizedCurrent;
-    //if (angleDiff > 180) angleDiff -= 360;
-    //if (angleDiff < -180) angleDiff += 360;
-
-    return angleDiff;
-}
-
 double automode::calculateDesiredHeading(double lat1, double lon1, double lat2, double lon2)
 {
     // Calculate the desired heading towards the target point
@@ -499,10 +517,6 @@ double automode::calculateDistance(double lat1, double lon1, double lat2, double
 
 double automode::normalizeAngle(double angle)
 {
-//    while (angle > M_PI) angle -= 2 * M_PI;
-//    while (angle < -M_PI) angle += 2 * M_PI;
-//    return angle;
-
     int maxIterations = 100;  // Limit to avoid infinite loop
 
     int iterationCount = 0;
@@ -631,7 +645,8 @@ void automode::on_addTargetPos_released()
                              .arg(lon, 0, 'f', 6); // Longitude with 6 decimal places
 
     // Append the formatted text to the QPlainTextEdit
-    ui->targetStatusText->appendPlainText(targetText);
+    ui->targetStatusText->setPlainText(targetText);
+
 
 }
 
@@ -666,30 +681,30 @@ void automode::on_loadSavedPos_released()
     QString targetText;
 
     //U-track
-    targets.push_back({45.00033187f, 15.00085662f});
-    targets.push_back({45.00041886f, 15.00074625f});
-    targets.push_back({45.00057393f, 15.00040801f});
-    targets.push_back({45.00059663f, 15.00006978f});
-    targets.push_back({45.00045038f, 14.99985794f});
-    targets.push_back({45.00025875f, 14.99989532f});
-    targets.push_back({45.00005956f, 15.00016769f});
-    targets.push_back({44.99995618f, 15.00044540f});
+//    targets.push_back({45.00033187f, 15.00085662f});
+//    targets.push_back({45.00041886f, 15.00074625f});
+//    targets.push_back({45.00057393f, 15.00040801f});
+//    targets.push_back({45.00059663f, 15.00006978f});
+//    targets.push_back({45.00045038f, 14.99985794f});
+//    targets.push_back({45.00025875f, 14.99989532f});
+//    targets.push_back({45.00005956f, 15.00016769f});
+//    targets.push_back({44.99995618f, 15.00044540f});
 
     // zigzag-track:
-//    targets.push_back({45.000188150000000, 15.000991910000000});
-//    targets.push_back({45.000280651650897, 15.001117926875928});
-//    targets.push_back({45.000439225909574, 15.001052584792113});
-//    targets.push_back({45.000554852973188, 15.001218273647501});
-//    targets.push_back({45.000762981687700, 15.001117926875928});
-//    targets.push_back({45.000908341424818, 15.001292950314717});
-//    targets.push_back({45.001080130205054, 15.001262612918660});
+    targets.push_back({45.000188150000000, 15.000991910000000});
+    targets.push_back({45.000280651650897, 15.001117926875928});
+    targets.push_back({45.000439225909574, 15.001052584792113});
+    targets.push_back({45.000554852973188, 15.001218273647501});
+    targets.push_back({45.000762981687700, 15.001117926875928});
+    targets.push_back({45.000908341424818, 15.001292950314717});
+    targets.push_back({45.001080130205054, 15.001262612918660});
 
     for (int i = 0; i < targets.size(); ++i) {
         double lat = targets[i].first;   // Extract latitude
         double lon = targets[i].second;  // E
-        
-        
-        
+
+
+
         // Iterate over all targets and format thextract longitude
         targetText.append(QString("Target %1: %2, %3\n")
                            .arg(i + 1)       // Target number
@@ -697,7 +712,7 @@ void automode::on_loadSavedPos_released()
                            .arg(lon, 0, 'f', 6)); // Longitude with 6 decimal places
     }
 
-    ui->targetStatusText->appendPlainText(targetText);
+    ui->targetStatusText->setPlainText(targetText);
 }
 
 
@@ -756,3 +771,6 @@ void automode::logDataToFile() {
         ROS_ERROR("Unable to open log file");
     }
 }
+
+
+

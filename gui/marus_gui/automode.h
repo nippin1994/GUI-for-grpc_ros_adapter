@@ -90,7 +90,6 @@ private:
     void resetPIDValues();  // Reset PID controller values
     void computePIDAndPublish(int targetIndex, double currentLat, double currentLon);  // Compute PID and publish PWM values
     double normalizeAngle(double angle);  // Normalize angle between -π and π
-    double calculateAngleDifference(double desired, double current);  // Calculate the shortest angle difference
     double calculateDesiredHeading(double lat1, double lon1, double lat2, double lon2);  // Calculate the desired heading
     void logDataToFile();
     void initializeLogFile();
@@ -109,7 +108,12 @@ private slots:
     void on_addTargetPos_released();
     void on_clearAllTargetPos_released();
     void on_loadSavedPos_released();
+    void updateGpsData(double latitude, double longitude, double altitude, QString fixStatus, QString targetText, double distance);
+    void updateImuData(double heading_deg, double roll_deg, double pitch_deg, double linear_speed);
 
+signals:
+    void updateGpsDataSignal(double latitude, double longitude, double altitude, QString fixStatus, QString targetText, double distance);
+    void updateImuDataSignal(double heading_deg, double roll_deg, double pitch_deg, double linear_speed);
 };
 
 #endif // AUTOMODE_H

@@ -25,6 +25,7 @@ tuningplot1::tuningplot1(QWidget *parent) :
 
     // set the window title
     setWindowTitle("PID Tuning Plot");
+
 }
 
 tuningplot1::~tuningplot1()
@@ -47,6 +48,44 @@ void tuningplot1::clearGraphs()
     positionPlot->legend->clearItems();
     anglePlot->legend->clearItems();
 
+    // Heading Error
+    headingplot->addGraph();
+    headingplot->graph(0)->setPen(QPen(Qt::blue));
+    headingplot->xAxis->setLabel("Time Step");
+    headingplot->yAxis->setLabel("Heading Error");
+
+    // Distance Error
+    distanceplot->addGraph();
+    distanceplot->graph(0)->setPen(QPen(Qt::red));
+    distanceplot->xAxis->setLabel("Time Step");
+    distanceplot->yAxis->setLabel("Distance Error");
+
+    // Position
+    positionPlot->addGraph();  // Current
+    positionPlot->graph(0)->setPen(QPen(Qt::green));
+    positionPlot->graph(0)->setName("Current Position");
+
+    positionPlot->addGraph();  // Desired
+    positionPlot->graph(1)->setPen(QPen(Qt::magenta));
+    positionPlot->graph(1)->setName("Desired Position");
+
+    positionPlot->legend->setVisible(true);
+    positionPlot->xAxis->setLabel("Time Step");
+    positionPlot->yAxis->setLabel("Position");
+
+    // Angle
+    anglePlot->addGraph();  // Current
+    anglePlot->graph(0)->setPen(QPen(Qt::green));
+    anglePlot->graph(0)->setName("Current Angle");
+
+    anglePlot->addGraph();  // Desired
+    anglePlot->graph(1)->setPen(QPen(Qt::magenta));
+    anglePlot->graph(1)->setName("Desired Angle");
+
+    anglePlot->legend->setVisible(true);
+    anglePlot->xAxis->setLabel("Time Step");
+    anglePlot->yAxis->setLabel("Heading Angle");
+
     // Replot the cleared plot
     headingplot->replot();
     distanceplot->replot();
@@ -61,6 +100,15 @@ void tuningplot1::updatePlot(const QVector<QPointF>& headingErrors, const QVecto
     // Clear previous graphs
     headingplot->clearGraphs();
     distanceplot->clearGraphs();
+
+    distanceplot->clearGraphs();
+    distanceplot->legend->clearItems();
+
+    positionPlot->clearGraphs();
+    positionPlot->legend->clearItems();
+
+    anglePlot->clearGraphs();
+    anglePlot->legend->clearItems();
 
     // Add new graph for heading error
     headingplot->addGraph();
@@ -176,3 +224,52 @@ void tuningplot1::updatePlot(const QVector<QPointF>& headingErrors, const QVecto
     anglePlot->rescaleAxes();
     anglePlot->replot();
 }
+
+void tuningplot1::appendPlotData(const QPointF& headingError,
+                                 const QPointF& distanceError,
+                                 const QPointF& currentPos,
+                                 const QPointF& desiredPos,
+                                 const QPointF& currentAng,
+                                 const QPointF& desiredAng)
+{
+    // Append data
+    headingplot->graph(0)->addData(headingError.x(), headingError.y());
+    distanceplot->graph(0)->addData(distanceError.x(), distanceError.y());
+
+    positionPlot->graph(0)->addData(currentPos.x(), currentPos.y());
+    positionPlot->graph(1)->addData(desiredPos.x(), desiredPos.y());
+
+    anglePlot->graph(0)->addData(currentAng.x(), currentAng.y());
+    anglePlot->graph(1)->addData(desiredAng.x(), desiredAng.y());
+
+    // Optional: remove old data (e.g., keep only last 500 points)
+    const double rangeSize = 500;
+    double xRight = headingError.x();
+    double xLeft = xRight - rangeSize;
+
+    headingplot->graph(0)->removeDataBefore(xLeft);
+    distanceplot->graph(0)->removeDataBefore(xLeft);
+    positionPlot->graph(0)->removeDataBefore(xLeft);
+    positionPlot->graph(1)->removeDataBefore(xLeft);
+    anglePlot->graph(0)->removeDataBefore(xLeft);
+    anglePlot->graph(1)->removeDataBefore(xLeft);
+
+    // Rescale the axes after adding the data
+    headingplot->rescaleAxes();
+    distanceplot->rescaleAxes();
+    positionPlot->rescaleAxes();
+    anglePlot->rescaleAxes();
+
+    // Keep the x-range sliding
+    headingplot->xAxis->setRange(xLeft, xRight);
+    distanceplot->xAxis->setRange(xLeft, xRight);
+    positionPlot->xAxis->setRange(xLeft, xRight);
+    anglePlot->xAxis->setRange(xLeft, xRight);
+
+    // Defer repaints
+    headingplot->replot();
+    distanceplot->replot();
+    positionPlot->replot();
+    anglePlot->replot();
+}
+

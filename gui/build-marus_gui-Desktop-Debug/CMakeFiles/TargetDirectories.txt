@@ -1,4 +1,0 @@
-/home/nippin/catkin_ws/src/GUI-for-grpc_ros_adapter/gui/build-marus_gui-Desktop-Debug/CMakeFiles/rebuild_cache.dir
-/home/nippin/catkin_ws/src/GUI-for-grpc_ros_adapter/gui/build-marus_gui-Desktop-Debug/CMakeFiles/edit_cache.dir
-/home/nippin/catkin_ws/src/GUI-for-grpc_ros_adapter/gui/build-marus_gui-Desktop-Debug/CMakeFiles/marus_gui.dir
-/home/nippin/catkin_ws/src/GUI-for-grpc_ros_adapter/gui/build-marus_gui-Desktop-Debug/CMakeFiles/marus_gui_autogen.dir

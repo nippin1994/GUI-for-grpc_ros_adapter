@@ -6,73 +6,54 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>607</width>
-    <height>438</height>
+    <width>618</width>
+    <height>418</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Plots</string>
   </property>
-  <widget class="QQuickWidget" name="headingPlot">
+  <widget class="QWidget" name="anglePlot" native="true">
    <property name="geometry">
     <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>300</width>
-     <height>200</height>
+     <x>10</x>
+     <y>10</y>
+     <width>301</width>
+     <height>201</height>
     </rect>
-   </property>
-   <property name="resizeMode">
-    <enum>QQuickWidget::SizeRootObjectToView</enum>
    </property>
   </widget>
-  <widget class="QQuickWidget" name="distancePlot">
+  <widget class="QWidget" name="distancePlot" native="true">
    <property name="geometry">
     <rect>
-     <x>300</x>
-     <y>0</y>
-     <width>300</width>
-     <height>200</height>
+     <x>310</x>
+     <y>10</y>
+     <width>301</width>
+     <height>201</height>
     </rect>
-   </property>
-   <property name="resizeMode">
-    <enum>QQuickWidget::SizeRootObjectToView</enum>
    </property>
   </widget>
-  <widget class="QQuickWidget" name="positionPlot">
+  <widget class="QWidget" name="positionPlot" native="true">
    <property name="geometry">
     <rect>
-     <x>0</x>
-     <y>200</y>
-     <width>300</width>
-     <height>200</height>
+     <x>10</x>
+     <y>210</y>
+     <width>301</width>
+     <height>201</height>
     </rect>
-   </property>
-   <property name="resizeMode">
-    <enum>QQuickWidget::SizeRootObjectToView</enum>
    </property>
   </widget>
-  <widget class="QQuickWidget" name="anglePlot">
+  <widget class="QWidget" name="headingPlot" native="true">
    <property name="geometry">
     <rect>
-     <x>300</x>
-     <y>200</y>
-     <width>300</width>
-     <height>200</height>
+     <x>310</x>
+     <y>210</y>
+     <width>301</width>
+     <height>201</height>
     </rect>
-   </property>
-   <property name="resizeMode">
-    <enum>QQuickWidget::SizeRootObjectToView</enum>
    </property>
   </widget>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>QQuickWidget</class>
-   <extends>QWidget</extends>
-   <header location="global">QtQuickWidgets/QQuickWidget</header>
-  </customwidget>
- </customwidgets>
  <resources/>
  <connections/>
 </ui>

@@ -3,3 +3,4 @@ venv/
 *__pycache__/
 *.pyc
 .idea
+gui/build-marus_gui-Desktop-Debug/

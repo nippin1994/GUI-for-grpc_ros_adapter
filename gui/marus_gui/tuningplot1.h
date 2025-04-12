@@ -24,6 +24,12 @@ public:
                     const QVector<QPointF>& desiredPositions,
                     const QVector<QPointF>& currentAngle,
                     const QVector<QPointF>& desiredAngle);
+    void appendPlotData(const QPointF& headingError,
+                                     const QPointF& distanceError,
+                                     const QPointF& currentPos,
+                                     const QPointF& desiredPos,
+                                     const QPointF& currentAng,
+                                     const QPointF& desiredAng);
 private:
     Ui::tuningplot1 *ui;
     QCustomPlot *headingplot;
